@@ -7,7 +7,7 @@ import NavLinks from "./NavLinks";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   return (
-      <nav className="bg-white">
+      <nav className="bg-white fixed w-full">
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between items-center h-16">
           <Link href="/" className="">
