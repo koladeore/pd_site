@@ -3,12 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import NavLinks from "./NavLinks";
+import { motion } from 'framer-motion';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   return (
       <nav className="bg-white fixed w-full">
-      <div className="flex items-center font-medium justify-around">
+      <div  className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between items-center h-16">
           <Link href="/" className="">
             <Image
@@ -37,32 +38,32 @@ const NavBar = () => {
           </div> 
         </div>
         <ul className="md:flex hidden uppercase items-center gap-8 font-[Poppins]">
-          <li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
               Home
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
               About
             </Link>
-          </li>
-          <NavLinks />
-          <li>
+          </motion.li>
+          <NavLinks  />
+          <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
               Media
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
               Contact
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
               Speaking Invite
             </Link>
-          </li>
+          </motion.li>
         </ul>
         {/* Mobile nav */}
         <ul
