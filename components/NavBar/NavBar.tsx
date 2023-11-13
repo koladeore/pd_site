@@ -51,11 +51,6 @@ const NavBar = () => {
           <NavLinks  />
           <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
-              Media
-            </Link>
-          </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/" className="py-7 px-3 inline-block">
               Contact
             </Link>
           </motion.li>

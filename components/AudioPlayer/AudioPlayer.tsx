@@ -1,13 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
-// import { BsArrowLeftShort } from 'react-icons/bs';
+import React from "react";
 import { BsCameraVideo } from 'react-icons/bs';
-import { SlEarphones } from 'react-icons/sl';
 import { BsCloudDownload } from 'react-icons/bs';
 import { client } from "@/app/lib/sanity";
 import { urlFor } from "@/app/lib/sanityImageUrl";
 import Image from "next/image";
-import Link from "next/link";
-
+import AudioPlayerToggle from "./TogglePlayer";
 interface AudioData {
   title: string;
   file: string;
@@ -50,16 +47,7 @@ const AudioPlayer = async () => {
             </a>
             <div>
               {/* LISTEN ICON */}
-              <button>
-                <SlEarphones/>
-              </button>
-              {/* <div className="w-72">
-                <div>
-                  <audio controls>
-                    <source src={audio.file} type="audio/mpeg" />
-                  </audio>
-                </div>
-              </div> */}
+              <AudioPlayerToggle audio={audio}/>
             </div>
             <div>
               <a
