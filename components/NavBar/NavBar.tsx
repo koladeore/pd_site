@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   return (
-      <nav className="bg-white fixed w-full">
+    <nav className="bg-white fixed w-full shadow-xl">
       <div  className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between items-center h-16">
           <Link href="/" className="">
@@ -49,11 +49,6 @@ const NavBar = () => {
             </Link>
           </motion.li>
           <NavLinks  />
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/" className="py-7 px-3 inline-block">
-              Media
-            </Link>
-          </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
               Contact
