@@ -20,9 +20,9 @@ const Footer = () => {
                   <div className="w-full md:w-1/2 lg:w-1/4 mb-4">
                       <h2 className="text-xl font-bold mb-4">Social Media</h2>
                       <ul className="flex space-x-4">
-                          <li><Link href="/"><AiFillInstagram className="text-white hover:text-pink-400" fontSize="2em" /></Link></li>
-                          <li><Link href="/"><AiFillFacebook className="text-white hover:text-pink-400" fontSize="2.5em" /></Link></li>
-                          <li><Link href="/"><AiFillYoutube className="text-white hover:text-pink-400" fontSize="2.1em" /></Link></li>
+                          <li><a href="https://www.instagram.com/davidmakanjuola_pd/" target="_blank" rel="noopener noreferrer"><AiFillInstagram className="text-white hover:text-pink-400" fontSize="2em" /></a></li>
+                          <li><a href="https://web.facebook.com/damola001" target="_blank" rel="noopener noreferrer"><AiFillFacebook className="text-white hover:text-pink-400" fontSize="2.5em" /></a></li>
+                          <li><a href="https://www.youtube.com/@officialdavidmakanjuolapd3858" target="_blank" rel="noopener noreferrer"><AiFillYoutube className="text-white hover:text-pink-400" fontSize="2.1em" /></a></li>
                       </ul>
                   </div>
 
@@ -30,11 +30,11 @@ const Footer = () => {
                       <h2 className="text-xl font-bold mb-4">Contact Us</h2>
                       <div className="flex pb-4">
                           <AiOutlineMail className="text-white" fontSize="1.5em" />
-                          <a href="mailto:david@gmail.com" className="pl-2 hover:text-pink-400">david@gmail.com</a>
+                          <a href="mailto:makanjuoladamola527@gmail.com" className="pl-2 hover:text-pink-400">makanjuoladamola527@gmail.com</a>
                       </div>
                       <div className="flex">
                           <AiFillPhone className="text-white" fontSize="1.5em" />
-                          <a href="tel:+(234)8096374530" className="pl-2 hover:text-pink-400">+(234)8096374530</a>
+                          <a href="tel:+(234)7064346811" className="pl-2 hover:text-pink-400">+(234)7064346811</a>
                       </div>
                   </div>
 
