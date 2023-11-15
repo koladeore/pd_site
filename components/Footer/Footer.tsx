@@ -5,9 +5,9 @@ import { AiFillInstagram, AiFillFacebook, AiFillYoutube, AiOutlineMail, AiFillPh
 const Footer = () => {
   return (
     <div>
-          <footer className="bg-gray-800 text-white p-8">
+          <footer className="bg-gray-800 text-white p-10">
               <div className="container mx-auto flex flex-wrap justify-between">
-                  <div className="w-full md:w-1/2 lg:w-1/4 mb-4">
+                  <div className="md:w-1/2 lg:w-1/4 mb-10">
                       <h2 className="text-xl font-bold mb-4">Quick Links</h2>
                       <ul>
                           <li className="mb-2 hover:text-pink-700"><Link href="/">Home</Link></li>
@@ -17,7 +17,7 @@ const Footer = () => {
                       </ul>
                   </div>
 
-                  <div className="w-full md:w-1/2 lg:w-1/4 mb-4">
+                  <div className="w-full md:w-1/2 lg:w-1/4 mb-10">
                       <h2 className="text-xl font-bold mb-4">Social Media</h2>
                       <ul className="flex space-x-4">
                           <li><a href="https://www.instagram.com/davidmakanjuola_pd/" target="_blank" rel="noopener noreferrer"><AiFillInstagram className="text-white hover:text-pink-400" fontSize="2em" /></a></li>
@@ -26,7 +26,7 @@ const Footer = () => {
                       </ul>
                   </div>
 
-                  <div className="w-full md:w-1/2 lg:w-1/4 mb-4">
+                  <div className="w-full md:w-1/2 lg:w-1/4 mb-10">
                       <h2 className="text-xl font-bold mb-4">Contact Us</h2>
                       <div className="flex pb-4">
                           <AiOutlineMail className="text-white" fontSize="1.5em" />
