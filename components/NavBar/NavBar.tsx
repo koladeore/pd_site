@@ -68,13 +68,13 @@ const NavBar = () => {
         `}
         >
           <li>
-            <Link href="/" className="py-7 px-3 inline-block">
+            <Link href="/" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
               Home
             </Link>
           </li>
           <NavLinks />
           <li>
-            <Link href="/about" className="py-7 px-3 inline-block">
+            <Link href="/about" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
               About
             </Link>
           </li>
