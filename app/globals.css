@@ -11,3 +11,6 @@
     --foreground-rgb: 255, 255, 255;
   }
 }
+body{
+  background-color: #1f1f21;
+}
