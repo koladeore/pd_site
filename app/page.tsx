@@ -1,4 +1,4 @@
-import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
+import Messages from "@/components/Messages/Messages";
 import CustomSlider from "@/components/CustomSlider/CustomSlider";
 import HomeContent from "@/components/HomeContent/HomeContent";
 import ScrollAnimation from "@/components/ScrollAnimation/ScrollAnimation";
@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <CustomSlider />
       <ScrollAnimation>
-        <AudioPlayer />
+        <Messages />
         <HomeContent />
       </ScrollAnimation>
     </div>

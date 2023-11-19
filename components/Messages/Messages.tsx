@@ -7,9 +7,18 @@ import AudioImage from "./AudioImage/AudioImage";
 import ScrollAnimation from "../ScrollAnimation/ScrollAnimation";
 import { AudioData } from "@/app/lib/interface";
 import ListenToAudio from "./ListenToAudio/ListenToAudio";
+import AudioPlayerToggle from "./AudioPlayerToggle/AudioPlayerToggle";
+import YoutubePlayer from "./YoutubePlayer/YoutubePlayer";
 
 async function getData() {
-    const query = `*[_type == 'audioMessage']`;
+  const query = `*[_type == 'audioMessage']{ 
+    title,
+    description,  
+    'file': audioFile.asset->url,
+    'image': image.asset->url,
+    youtubeUrl,
+  }`;
+;
   const data = await client.fetch(query, {
     next: {
       revalidate: 0,
@@ -17,7 +26,7 @@ async function getData() {
   });
   return data;
 }
-const AudioPlayer = async () => {
+const Messages = async () => {
   const data = (await getData()) as AudioData[];
   return (
     <div>
@@ -29,16 +38,17 @@ const AudioPlayer = async () => {
                 <AudioImage audio={audio} />
               </Link>
               <div className="flex gap-8 pt-4">
-                <a
+                <YoutubePlayer audio={audio} />
+                {/* <a
                   href={audio.youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <BsCameraVideo className="hover:text-pink-400" />
-                </a>
+                </a> */}
                 <div>
                   {/* LISTEN ICON */}
-                  <ListenToAudio audio={audio} />
+                  <AudioPlayerToggle audio={audio} />
                 </div>
                 <div>
                   <DownloadMessage audio={audio} />
@@ -59,4 +69,4 @@ const AudioPlayer = async () => {
   );
 };
 
-export default AudioPlayer;
+export default Messages;

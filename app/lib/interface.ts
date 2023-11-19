@@ -1,17 +1,7 @@
 export interface AudioData {
   title: string;
-  audioFile: {
-    asset: {
-      _ref: string;
-      _type: string;
-    };
-    _type: string;
-  };
+  file: string;
   image: string;
   youtubeUrl: string;
-  description: string;
-  _id: string;
-   slug: {
-    current: string;
-  };
+ description: string;
 }
