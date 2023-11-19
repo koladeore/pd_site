@@ -23,7 +23,7 @@ const YoutubePlayer = ({ audio }: YoutubePlayerProps) => {
     return (
         <div>
             <BsCameraVideo
-                className="hover:text-pink-400"
+                className="hover:text-pink-400 cursor-pointer"
                 onClick={handleOpenModal}
             />
             <Modal
