@@ -76,7 +76,7 @@ const Footer = () => {
             </div>
 
             <div className="w-full md:w-1/2 lg:w-1/4 mb-10">
-              <h2 className="text-xl font-bold mb-4">Contact Us</h2>
+              <h2 className="text-xl font-bold mb-4">Contact</h2>
               <div className="flex pb-4">
                 <AiOutlineMail className="text-white" fontSize="1.5em" />
                 <a

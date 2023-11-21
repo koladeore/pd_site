@@ -1,12 +1,10 @@
 import React from "react";
-import { BsCameraVideo } from "react-icons/bs";
 import { client } from "@/app/lib/sanity";
 import { DownloadMessage } from "./download/DownloadMessage";
 import Link from "next/link";
 import AudioImage from "./AudioImage/AudioImage";
 import ScrollAnimation from "../ScrollAnimation/ScrollAnimation";
 import { AudioData } from "@/app/lib/interface";
-import ListenToAudio from "./ListenToAudio/ListenToAudio";
 import AudioPlayerToggle from "./AudioPlayerToggle/AudioPlayerToggle";
 import YoutubePlayer from "./YoutubePlayer/YoutubePlayer";
 
@@ -17,37 +15,31 @@ async function getData() {
     'file': audioFile.asset->url,
     'image': image.asset->url,
     youtubeUrl,
+    slug
   }`;
 ;
-  const data = await client.fetch(query, {
-    next: {
-      revalidate: 0,
-    },
-  });
+    const data = await client.fetch(query, {
+      next: {
+        revalidate: 0,
+      },
+    });
   return data;
 }
 const Messages = async () => {
   const data = (await getData()) as AudioData[];
+  console.log("AudioData", data)
   return (
     <div>
       <ScrollAnimation>
         <div className="bg-white pl-32 pt-10 grid md:grid-cols-3">
           {data.slice(0, 3).map((audio) => (
             <div key={audio.title}>
-              <Link href="/">
+              <Link href={`/audio/${audio.slug.current}`}>
                 <AudioImage audio={audio} />
               </Link>
               <div className="flex gap-8 pt-4">
                 <YoutubePlayer audio={audio} />
-                {/* <a
-                  href={audio.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <BsCameraVideo className="hover:text-pink-400" />
-                </a> */}
                 <div>
-                  {/* LISTEN ICON */}
                   <AudioPlayerToggle audio={audio} />
                 </div>
                 <div>

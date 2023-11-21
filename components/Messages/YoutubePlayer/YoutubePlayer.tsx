@@ -7,10 +7,10 @@ interface YoutubePlayerProps {
     audio: {
         youtubeUrl: string;
     };
+    iconSize?: string;
 }
 
-const YoutubePlayer = ({ audio }: YoutubePlayerProps) => {
-    console.log('audioYoutube',audio.youtubeUrl)
+const YoutubePlayer = ({ audio, iconSize = '1rem' }: YoutubePlayerProps) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const handleOpenModal = () => {
@@ -22,10 +22,14 @@ const YoutubePlayer = ({ audio }: YoutubePlayerProps) => {
     };
     return (
         <div>
-            <BsCameraVideo
-                className="hover:text-pink-400 cursor-pointer"
-                onClick={handleOpenModal}
-            />
+            <div className="flex gap-4 hover:text-pink-400 cursor-pointer" onClick={handleOpenModal}>
+                <BsCameraVideo
+                    className="hover:text-pink-400 cursor-pointer"
+                    onClick={handleOpenModal}
+                    style={{ fontSize: iconSize }}
+                />
+                {iconSize !== '1rem' ? <div>Watch</div> : "" }
+            </div>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={handleCloseModal}

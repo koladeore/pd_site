@@ -1,30 +1,69 @@
 import { AudioData } from "@/app/lib/interface";
 import { client } from "@/app/lib/sanity";
-// import AudioPlayerComponent from "@/components/Messages/AudioPlayerComponent/AudioPlayerComponent";
+import Image from "next/image";
+import { urlFor } from "@/app/lib/sanityImageUrl";
+import AudioPlayerToggle from "@/components/Messages/AudioPlayerToggle/AudioPlayerToggle";
+import YoutubePlayer from "@/components/Messages/YoutubePlayer/YoutubePlayer";
+import { DownloadMessage } from "@/components/Messages/download/DownloadMessage";
 
-
-async function getData(slug: string){
-    const query = `*[_type == 'audioMessage' && slug.current == '${slug}'][0]`
+async function getData(slug: string) {
+    const query = `*[_type == 'audioMessage' && slug.current == '${slug}'][0]{
+    title,
+    description,
+    'audioFile': audioFile.asset->url,
+    'image': image.asset->url,
+    youtubeUrl,
+    slug
+  }`;
     const data = await client.fetch(query);
-    return data;
+
+    const formattedData = {
+        file: data.audioFile,
+        image: data.image,
+        youtubeUrl: data.youtubeUrl,
+        slug: data.slug,
+        title: data.title,
+        description: data.description,
+    };
+
+    return formattedData;
 }
-const AudioPage = async ({params}: {
+const AudioDetailsPage = async ({params}: {
    params: { slug: string  } 
 }) => {
-    // const audio = (await getData(params.slug)) as AudioData;
-    // const audioFileRef = audio.audioFile.asset._ref;
-    // const audioFile = await client.fetch(`*[_id == '${audioFileRef}']{url}[0].url`);
+    const { slug } = params;
+    const audioData = await getData(slug) as AudioData;
+    console.log("audioData", audioData)
     return (
-        <div className="bg-white pt-36 pb-24">
-            {/* <AudioPlayerComponent audioFile={audioFile}/> */}
-            {/* <div className="flex items-center justify-center">
-                <div className="max-w-md mx-auto rounded-md">
-                    <audio controls autoPlay className="w-96 bg-pink-500 text-white rounded-md">
-                        <source src={audioFile} type="audio/mpeg" />
-                    </audio>
+        <div className="bg-white pt-4 pb-10 md:pl-10 pl-1">
+            <h1 className="text-2xl font-bold text-pink-500">{audioData.title}</h1>
+            <div className="border-t border-gray-300 h-0 w-full mt-4 pb-2"></div>
+            <div className="pt-4">
+                <Image
+                    src={urlFor(audioData.image).url()}
+                    alt="Image"
+                    className=""
+                    width={750}
+                    height={750}
+                />
+            </div>
+            <div>
+                <div className="flex gap-8 pt-4 items-center">
+                    <div className="border border-solid border-gray-300 p-2">
+                        <YoutubePlayer audio={audioData} iconSize="1.5rem" />
+                    </div>
+                    <div className="border border-solid border-gray-300 p-2">
+                        <AudioPlayerToggle audio={audioData} iconSize="1.5rem" />
+                    </div>
+                    <div className="border border-solid border-gray-300 p-2">
+                        <DownloadMessage audio={audioData} iconSize="1.5rem" />
+                    </div>
                 </div>
-            </div> */}
+            </div>
+            <p className="pt-4 text-gray-700 text-sm font-normal leading-6 md:w-[550px] w-[450px]">
+                {audioData.description}
+            </p>
         </div>
     )
 }
-export default AudioPage;
+export default AudioDetailsPage;
