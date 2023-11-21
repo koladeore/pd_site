@@ -12,14 +12,20 @@ interface YoutubePlayerProps {
 
 const YoutubePlayer = ({ audio, iconSize = '1rem' }: YoutubePlayerProps) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [isLoading, setLoading] = useState(true);
 
     const handleOpenModal = () => {
         setModalIsOpen(true);
+        setLoading(true);
     };
 
     const handleCloseModal = () => {
         setModalIsOpen(false);
     };
+    const handleVideoLoad = () => {
+        setLoading(false);
+    };
+
     return (
         <div>
             <div className="flex gap-4 hover:text-pink-400 cursor-pointer" onClick={handleOpenModal}>
@@ -37,15 +43,20 @@ const YoutubePlayer = ({ audio, iconSize = '1rem' }: YoutubePlayerProps) => {
                 className="fixed inset-0 flex items-center justify-center md:w-[560px] w-[400px] ml-[50px] h-[315px] md:ml-[350px] mt-[200px]"
                 overlayClassName="fixed inset-0 bg-black opacity-95"
             >
-                <div className="w-full h-full flex justify-center items-center">
+                {isLoading ? (
+                    <div className="w-full h-full flex justify-center items-center">
+                        <div className="animate-spin rounded-full border-t-4 border-gray-300 border-solid h-12 w-12"></div>
+                    </div>
+                ) : null}
+                <div className={`w-full h-full flex justify-center items-center ${isLoading ? 'hidden' : ''}`}>
                     <iframe
+                        onLoad={handleVideoLoad}
                         className="w-full h-full border-none"
                         src={audio.youtubeUrl}
                         title="YouTube Video"
                         allowFullScreen
                     ></iframe>
                 </div>
-                
             </Modal>
         </div>
     );
