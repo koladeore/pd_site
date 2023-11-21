@@ -7,7 +7,7 @@ const About = () => {
     <div className="bg-white">
       <ScrollAnimation>
         <div>
-          <div className="bg-gray-500 md:h-[400px] h-[353px] mb-8">
+          <div className="bg-gray-500 md:h-[400px] h-[347px] mb-8">
             <div className="flex items-center justify-center relative">
               <Image
                 src="/assets/about.png"
@@ -28,50 +28,60 @@ const About = () => {
             <div className="flex md:justify-around shadow-md md:pb-8 md:flex-row flex-col">
               <div className="p-8">
                 <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                  Lead Pastor
+                  Also known as PD
                 </div>
                 <h2 className="block mt-1 text-lg leading-tight font-medium text-black">
-                  Bolaji Odejide
+                  David Makanjuola
                 </h2>
                 <p className="mt-2 text-gray-500">
-                  Bolaji Odejide is a strategic leadership trainer, a charismatic
-                  pastor, a theologian, and an author.
+                  PD&apos;s commitment to his spiritual calling is unwavering, and he consistently endeavors to 
+                  communicate the message of Christ with clarity, sincerity, and conviction.
                 </p>
                 <p className="mt-2 text-gray-500">
-                  He is the Lead Pastor of Believers ‘ Heritage Baptist Church and
-                  the Convener of Prophetic Assembly, an interdenominational
-                  meeting that gathers thousands of people from different parts of
-                  the world in its annual meeting, with the vision of raising,
-                  empowering, and releasing end-time armies for kingdom growth.
+                  PD is the Lead Pastor at SOS, a vibrant campus fellowship in three Kwara State campuses.
+                  He also convenes Parousia Extension, an annual gathering of 1000+ youth, where prayers, praise, healings, and miracles abound for those in darkness.
                 </p>
                 <p className="mt-2 text-gray-500">
-                  He is the pioneer and convener of Come and Drink Discipleship,
-                  the fast-growing and life-changing holistic weekly gathering.
+                  His dedication to making a positive impact is not limited to the spiritual realm.
+                  He serves as the CEO of DMI Branding Agency, a branding and fashion agency that incorporates elements of hope and inspiration into its designs.
+                  Through fashion, PD aims to uplift and encourage individuals, demonstrating his unwavering dedication to his mission.
                 </p>
                 <p className="mt-2 text-gray-500">
-                  He is also the President of Project H.O.P.E., an initiative with
-                  the goal of giving orphans a good education and helping them get
-                  through life with ease.
+                  PD is not only a dynamic speaker and organizer but also a prolific author.
+                  His numerous books cover spiritual and personal growth, providing invaluable guidance, inspiration, and enlightenment.
+                  PD&apos;s influence extends digitally, with his podcasts and materials reaching diverse audiences, blessing and encouraging countless individuals.
                 </p>
                 <p className="mt-2 text-gray-500">
-                  He is also the Founder of Campus Invasion Company, a subsidiary
-                  of the Flaming Prophetic Assembly Worldwide, with a vision aimed
-                  at winning souls and restoring lives for Christ in universities,
-                  colleges, and institutions nationwide.
+                  He holds a BSc. in Environmental Management and Toxicology, and also graduated from Freedom Ministry Academy, deepening his ministry knowledge.
+                  He received certificates from the Young Africa Leaders Initiative for personal growth strategies and understanding climate change, showcasing his commitment to growth and addressing global challenges.
                 </p>
                 <p className="mt-2 text-gray-500">
-                  He is the proprietor of TFPAW School of Ministry, a learning
-                  institution where professionals and young ministers are groomed
-                  to fulfill ministry purposes in their careers and profession.
+                  Above all, PD&apos;s unwavering passion for God and humanity defines him.
+                  Rooted in deep faith, his teachings and actions reflect genuine care for others, making a positive impact. 
+                  He is married to Mrs. Deborah Makanjuola, his partner in life and purpose, and blessed with a daughter.
                 </p>
               </div>
-              <div className="bg-[#1f1f21] md:mr-10">
-                <Image
-                  src="/assets/pd.png"
-                  alt="about"
-                  height={700}
-                  width={700}
-                />
+              <div className="pl-10 md:pl-0">
+                <div className="bg-[#1f1f21] h-[405px] w-[400px] mt-10">
+                  <div className="pl-12">
+                    <Image
+                      src="/assets/pd_aboutImage.png"
+                      alt="about"
+                      height={200}
+                      width={300}
+                    />
+                  </div>
+                </div>
+                <div className="bg-[#1f1f21] md:mr-10 h-[405px] w-[400px] mt-2 mb-10 mb:0">
+                  <div className="pl-12 flex items-center justify-center">
+                    <Image
+                      src="/assets/pd_aboutImage_two.png"
+                      alt="about"
+                      height={270}
+                      width={270}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
