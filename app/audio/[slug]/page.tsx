@@ -33,7 +33,6 @@ const AudioDetailsPage = async ({params}: {
 }) => {
     const { slug } = params;
     const audioData = await getData(slug) as AudioData;
-    console.log("audioData", audioData)
     return (
         <div className="bg-white pt-4 pb-10 md:pl-10 pl-1">
             <h1 className="text-2xl font-bold text-pink-500">{audioData.title}</h1>

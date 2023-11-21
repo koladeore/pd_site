@@ -27,7 +27,6 @@ async function getData() {
 }
 const Messages = async () => {
   const data = (await getData()) as AudioData[];
-  console.log("AudioData", data)
   return (
     <div>
       <ScrollAnimation>
