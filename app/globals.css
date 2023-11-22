@@ -11,9 +11,6 @@
     --foreground-rgb: 255, 255, 255;
   }
 }
-
-body {
-  /* color: text-white; */
-  /* background-color: black; */
-  /* padding: 1rem; */
+body{
+  background-color: #1f1f21;
 }
