@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { links } from "./MyLinks";
+import { useAppContext } from "@/context/AppContext";
 
 const NavLinks = () => {
   const [openSublink, setOpenSublink] = useState("");
+  const { open, setOpen } = useAppContext();
   return (
     <>
       {links.map((topLevelLink) => (
@@ -54,7 +56,9 @@ const NavLinks = () => {
                       <div key={sublink.name}>
                         <ul className="text-lg font-semibold">
                           <li className="text-sm text-gray-600 my-2.5">
-                            {sublink.name}
+                            <Link href={sublink.link} className="hover:text-primary">
+                              {sublink.name}
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -70,7 +74,7 @@ const NavLinks = () => {
             {topLevelLink.sublinks &&
               topLevelLink.sublinks.map((sublink) => (
                 <div key={sublink.name}>
-                  <div>
+                  <div onClick={() => setOpen(!open)}>
                     <ul className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center">
                           <li className="text-sm text-gray-600 my-2.5">
                             <Link href={sublink.link} className="hover:text-primary">
