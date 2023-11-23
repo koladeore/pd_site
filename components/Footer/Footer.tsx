@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div className="bg-white">
       <ScrollAnimation>
-        <footer className="bg-gray-800 text-white p-10">
+        <footer className="bg-gray-900 text-white pl-10 pt-10">
           <div className="container mx-auto flex flex-wrap justify-between">
             <div className="md:w-1/2 lg:w-1/4 mb-10">
               <h2 className="text-xl font-bold mb-4">Quick Links</h2>
@@ -22,13 +22,13 @@ const Footer = () => {
                   <Link href="/">Home</Link>
                 </li>
                 <li className="mb-2 hover:text-pink-700">
-                  <Link href="/">About</Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li className="mb-2 hover:text-pink-700">
-                  <Link href="/">Messages</Link>
+                  <Link href="/allMessages">Messages</Link>
                 </li>
                 <li className="mb-2 hover:text-pink-700">
-                  <Link href="/">Get in Touch</Link>
+                  <Link href="/">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -105,7 +105,7 @@ const Footer = () => {
               </p>
               <div className="pt-10">
                 <Link
-                  href="/"
+                  href="/about"
                   className=" bg-pink-500 text-white hover:bg-transparent border-pink-500  border py-2 px-4 rounded"
                 >
                   Read More

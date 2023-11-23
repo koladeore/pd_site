@@ -8,27 +8,3 @@ export interface AudioData {
     current: string;
   };
 }
-export interface DetailsAudioData {
-  description: string;
-  title: string;
-  image: {
-    _type: 'image';
-    asset: {
-      _ref: string;
-      _type: 'reference';
-    };
-  };
-  audioFile: {
-    asset: {
-      _ref: string;
-      _type: 'reference';
-    };
-    _type: 'file';
-  };
-  _id: string;
-  slug: {
-    current: string;
-    _type: 'slug';
-  };
-  youtubeUrl: string;
-}

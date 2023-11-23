@@ -4,9 +4,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import { motion } from 'framer-motion';
+import { useAppContext } from "@/context/AppContext";
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false);
+  const {open, setOpen} = useAppContext();
   return (
     <motion.nav 
       initial={{ opacity: 0, y: -50 }}
@@ -55,13 +56,13 @@ const NavBar = () => {
           </motion.li>
           <NavLinks />
           <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/" className="py-7 px-3 inline-block">
-              Contact
+            <Link href="/allMessages" className="py-7 px-3 inline-block">
+              Messages
             </Link>
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/" className="py-7 px-3 inline-block">
-              Speaking Invite
+              Contact
             </Link>
           </motion.li>
         </ul>
@@ -77,20 +78,20 @@ const NavBar = () => {
               Home
             </Link>
           </li>
-          <NavLinks />
           <li>
             <Link href="/about" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
               About
             </Link>
           </li>
+          <NavLinks />
           <li>
-            <Link href="/" className="py-7 px-3 inline-block">
-              Contact
+            <Link href="/allMessages" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
+              Messages
             </Link>
           </li>
           <li>
             <Link href="/" className="py-7 px-3 inline-block">
-              Speaking Invite
+              Contact
             </Link>
           </li>
         </ul>

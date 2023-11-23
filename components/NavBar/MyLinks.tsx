@@ -13,9 +13,8 @@ export const links: Link[] = [
         name: "Teachings",
         submenu: true,
         sublinks: [
-            { name: "Youtube Messages", link: "/" },
-            { name: "Audio Messages", link: "/" },
-            { name: "Messages(pdf)", link: "/" },
+            { name: "Youtube Messages", link: "https://www.youtube.com/@officialdavidmakanjuolapd3858" },
+            { name: "Messages", link: "/allMessages" },
             { name: "Books", link: "/" },
         ],
     },
@@ -23,9 +22,7 @@ export const links: Link[] = [
         name: "Ministry",
         submenu: true,
         sublinks: [
-            { name: "SOS", link: "/" },
-            { name: "TFPAW", link: "/" },
-            
+            { name: "SOS", link: "https://www.facebook.com/profile.php?id=100068085294838" },
         ],
     },
 ];
