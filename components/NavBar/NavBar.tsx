@@ -5,14 +5,15 @@ import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import { motion } from 'framer-motion';
 import { useAppContext } from "@/context/AppContext";
+import { AiOutlineShopping } from 'react-icons/ai'
 
 const NavBar = () => {
   const {open, setOpen} = useAppContext();
   return (
     <motion.nav 
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
+      // initial={{ opacity: 0, y: -50 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // transition={{ duration: 0.2 }}
       className="bg-white sticky top-0 w-full shadow-xl z-50"
     >
       <div className="flex items-center font-medium justify-around">
@@ -25,22 +26,30 @@ const NavBar = () => {
               width={70}
             />
           </Link>
-          <div className="text-3xl md:hidden cursor-pointer" onClick={() => setOpen(!open)}>
-            {open ? (
-              <Image
-                src="/assets/close-svgrepo.svg"
-                alt="hamburger-menu"
-                height={24}
-                width={24}
-              />
-            ) : (
-              <Image
-                src="/assets/hamburger-menu.svg"
-                alt="hamburger-menu"
-                width={24}
-                height={24}
-              />
-            )}
+          <div className="flex items-center md:hidden">
+            <Link href="/" className="pr-4">
+              <AiOutlineShopping fontSize="2em" className="relative"/>
+              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
+                <span className="text-white text-sm font-light">0</span>
+              </div>
+            </Link>
+            <div className="text-3xl cursor-pointer" onClick={() => setOpen(!open)}>
+              {open ? (
+                <Image
+                  src="/assets/close-svgrepo.svg"
+                  alt="hamburger-menu"
+                  height={24}
+                  width={24}
+                />
+              ) : (
+                <Image
+                  src="/assets/hamburger-menu.svg"
+                  alt="hamburger-menu"
+                  width={24}
+                  height={24}
+                />
+              )}
+            </div>
           </div>
         </div>
         <ul className="md:flex hidden uppercase items-center gap-8 font-[Poppins]">
@@ -63,6 +72,14 @@ const NavBar = () => {
           <motion.li whileHover={{ scale: 1.1 }}>
             <Link href="/books" className="py-7 px-3 inline-block">
               Books
+            </Link>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
+            <Link href="/" className="py-7 px-3 inline-block">
+              <AiOutlineShopping fontSize="2em" className="relative"/>
+              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
+                <span className="text-white text-sm font-light">0</span>
+              </div>
             </Link>
           </motion.li>
         </ul>

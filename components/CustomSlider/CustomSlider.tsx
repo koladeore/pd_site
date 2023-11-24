@@ -46,7 +46,7 @@ const CustomSlider = () => {
     autoplaySpeed: 4000,
   };
   return (
-    <div className="">
+    <div className="bg-[#1f1f21]">
       <Slider {...settings}>
         <div className="">
           <div className="flex md:justify-around items-center justify-center md:flex-row flex-col">
