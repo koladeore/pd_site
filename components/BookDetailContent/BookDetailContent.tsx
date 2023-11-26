@@ -4,18 +4,21 @@ import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 import { FaCartArrowDown, FaShoppingBasket } from "react-icons/fa";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 interface BookDetailsContentProps {
-    bookData: BookData
+    bookData: BookData;
 }
-const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
+const BookDetailContent = ({ bookData }: BookDetailsContentProps) => { 
   const { qty, decQty, incQty, onAdd, setShowCart } = useAppContext();
+  const router = useRouter();
   const handleAddToCart = () => {
     onAdd(bookData, qty);
   };
   const handleBuyNow = () => {
     onAdd(bookData, qty);
     setShowCart(true);
+    router.push('/cart');
   };
   return (
     <div>

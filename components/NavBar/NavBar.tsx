@@ -6,9 +6,16 @@ import NavLinks from "./NavLinks";
 import { motion } from 'framer-motion';
 import { useAppContext } from "@/context/AppContext";
 import { AiOutlineShopping } from 'react-icons/ai'
+import { useRouter } from "next/navigation";
 
 const NavBar = () => {
   const { open, setOpen, showCart, setShowCart, totalQuantities } = useAppContext();
+  const router = useRouter();
+  const goToCart = () => {
+    setShowCart(true);
+    setOpen(false);
+    router.push('/cart');
+  };
   return (
     <motion.nav 
       // initial={{ opacity: 0, y: -50 }}
@@ -27,13 +34,11 @@ const NavBar = () => {
             />
           </Link>
           <div className="flex items-center md:hidden">
-            <div onClick={() => setShowCart(true)} className="pr-2">
-              <Link href="/" className="">
+            <div onClick={goToCart} className="pr-2 cursor-pointer">
                 <AiOutlineShopping fontSize="2em" className="relative" />
                 <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
                   <span className="text-white text-sm font-light">{totalQuantities}</span>
                 </div>
-              </Link>
             </div>
             <div className="text-3xl cursor-pointer" onClick={() => setOpen(!open)}>
               {open ? (
@@ -77,13 +82,11 @@ const NavBar = () => {
             </Link>
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
-            <div onClick={() => setShowCart(true)}>
-              <Link href="/" className="py-7 px-3 inline-block">
-                <AiOutlineShopping fontSize="2em" className="relative" />
-                <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
-                  <span className="text-white text-sm font-light">{totalQuantities}</span>
-                </div>
-              </Link>
+            <div onClick={goToCart} className="py-7 px-3 inline-block cursor-pointer">
+              <AiOutlineShopping fontSize="2em" className="relative" />
+              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
+                <span className="text-white text-sm font-light">{totalQuantities}</span>
+              </div>
             </div>
           </motion.li>
         </ul>
@@ -111,7 +114,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/books" className="py-7 px-3 inline-block">
+            <Link href="/books" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
               Books
             </Link>
           </li>
