@@ -8,7 +8,7 @@ import { useAppContext } from "@/context/AppContext";
 import { AiOutlineShopping } from 'react-icons/ai'
 
 const NavBar = () => {
-  const {open, setOpen} = useAppContext();
+  const { open, setOpen, showCart, setShowCart, totalQuantities } = useAppContext();
   return (
     <motion.nav 
       // initial={{ opacity: 0, y: -50 }}
@@ -27,12 +27,14 @@ const NavBar = () => {
             />
           </Link>
           <div className="flex items-center md:hidden">
-            <Link href="/" className="pr-4">
-              <AiOutlineShopping fontSize="2em" className="relative"/>
-              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
-                <span className="text-white text-sm font-light">0</span>
-              </div>
-            </Link>
+            <div onClick={() => setShowCart(true)} className="pr-2">
+              <Link href="/" className="">
+                <AiOutlineShopping fontSize="2em" className="relative" />
+                <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
+                  <span className="text-white text-sm font-light">{totalQuantities}</span>
+                </div>
+              </Link>
+            </div>
             <div className="text-3xl cursor-pointer" onClick={() => setOpen(!open)}>
               {open ? (
                 <Image
@@ -75,12 +77,14 @@ const NavBar = () => {
             </Link>
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/" className="py-7 px-3 inline-block">
-              <AiOutlineShopping fontSize="2em" className="relative"/>
-              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
-                <span className="text-white text-sm font-light">0</span>
-              </div>
-            </Link>
+            <div onClick={() => setShowCart(true)}>
+              <Link href="/" className="py-7 px-3 inline-block">
+                <AiOutlineShopping fontSize="2em" className="relative" />
+                <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
+                  <span className="text-white text-sm font-light">{totalQuantities}</span>
+                </div>
+              </Link>
+            </div>
           </motion.li>
         </ul>
         {/* Mobile nav */}
