@@ -25,7 +25,7 @@ const NavBar = () => {
     >
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between items-center h-16">
-          <Link href="/" className="">
+          <Link href="/" className="" onClick={() => setOpen(false)}>
             <Image
               src="/assets/pd_logo.png"
               alt="logo"

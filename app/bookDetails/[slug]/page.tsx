@@ -7,7 +7,8 @@ async function getBookData(slug: string) {
     details,
     'image': image.asset->url,
     price,
-    slug
+    slug,
+    _id
   }`;
   const data = await client.fetch(query);
   return data;

@@ -52,22 +52,20 @@ const CustomSlider = () => {
           <div className="flex md:justify-around items-center justify-center md:flex-row flex-col">
             <div className="md:order-1 order-last text-center sm:text-left mt-4">
               <h1 className="text-white font-bold md:text-4xl pb-5 text-2xl">
-                Are you Responding to God&apos;s Love?
+                Welcome to Pastor David Makanjuola&apos;s Corner,
               </h1>
               <p className="text-white md:leading-7 leading-6 md:text-base text-sm">
-                When you truly grasp the depth of God&apos;s love for you, it
-                compels you to
+                A place of love, faith, and community,
+                We&apos;re thrilled to have you here,
                 <br />
-                respond in love towards others. It motivates you to extend
-                grace, show
+                ready to embark on a journey of spiritual growth and inspiration.
                 <br />
-                compassion, and seek reconciliation.God&apos;s love becomes a
-                catalyst for
+                Join us as we seek God&apos;s truth, support one another, and experience the power of His presence.
                 <br />
-                positive transformation, both in your life and in the lives of
-                those around
+                Together, let&apos;s discover a deeper understanding of His love, find solace in His Word
                 <br />
-                you. Respond to His love!
+                and cultivate a faith that transforms lives.
+                Welcome home.
               </p>
             </div>
             <div className="md:order-last">
