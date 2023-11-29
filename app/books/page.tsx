@@ -11,7 +11,6 @@ async function getProductData () {
 }
 const BookPage = async () => {
   const data = (await getProductData()) as BookData[];
-  // console.log('data', data);
   return (
     <div>
       <ScrollAnimation>

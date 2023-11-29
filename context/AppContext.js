@@ -1,14 +1,27 @@
 "use client"
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 const AppContext = createContext();
 import { toast } from "react-hot-toast";
+import Cookies from "js-cookie";
+
 
 export const AppProvider = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalQuantities, setTotalQuantities] = useState(0);
-    const [qty, setQty] = useState(1);
+    const [cartItems, setCartItems] = useState(
+      JSON.parse(Cookies.get("cart") || "[]")
+    );
+    const [totalPrice, setTotalPrice] = useState(
+      JSON.parse(Cookies.get("totalPrice") || 0)
+    );
+    const [totalQuantities, setTotalQuantities] = useState(
+      JSON.parse(Cookies.get("totalQuantities") || 0)
+    );
+    useEffect(() => {
+      Cookies.set("cart", JSON.stringify(cartItems));
+      Cookies.set("totalPrice", JSON.stringify(totalPrice));
+      Cookies.set("totalQuantities", JSON.stringify(totalQuantities));
+    }, [cartItems, totalQuantities, totalPrice]);
+  const [qty, setQty] = useState(1);
     const [open, setOpen] = useState(false);
     let foundProduct;
     let index;
