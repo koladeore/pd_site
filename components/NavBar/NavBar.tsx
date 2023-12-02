@@ -4,15 +4,18 @@ import Link from "next/link";
 import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import { motion } from 'framer-motion';
-import { useAppContext } from "@/context/AppContext";
+import { useCart } from "@/hooks/useCart";
 import { AiOutlineShopping } from 'react-icons/ai'
 import { useRouter } from "next/navigation";
 
 const NavBar = () => {
-  const { open, setOpen, showCart, setShowCart, totalQuantities } = useAppContext();
+  const {
+    open,
+    setOpen,
+    cartTotalQty: totalQuantities,
+  } = useCart();
   const router = useRouter();
   const goToCart = () => {
-    setShowCart(true);
     setOpen(false);
     router.push('/cart');
   };

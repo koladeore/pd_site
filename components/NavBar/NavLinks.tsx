@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { links } from "./MyLinks";
-import { useAppContext } from "@/context/AppContext";
+import { useCart } from "@/hooks/useCart";
 
 const NavLinks = () => {
   const [openSublink, setOpenSublink] = useState("");
-  const { open, setOpen } = useAppContext();
+  const { open, setOpen } = useCart();
   return (
     <>
       {links.map((topLevelLink) => (

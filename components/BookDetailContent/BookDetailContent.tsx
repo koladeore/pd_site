@@ -1,24 +1,35 @@
 "use client"
+import { useState } from "react";
 import { BookData } from "@/app/lib/interface";
-import { useAppContext } from "@/context/AppContext";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/hooks/useCart";
 import Image from "next/image";
 import { FaCartArrowDown, FaShoppingBasket } from "react-icons/fa";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { useRouter } from "next/navigation";
 
 interface BookDetailsContentProps {
     bookData: BookData;
 }
 const BookDetailContent = ({ bookData }: BookDetailsContentProps) => { 
-  const { qty, decQty, incQty, onAdd, setShowCart } = useAppContext();
+  const [qty, setQty] = useState(1);
+  const [disable, setDisable] = useState(true);
   const router = useRouter();
+  const bookWithQuantity = {
+    ...bookData,
+    quantity: qty,
+  };
+  const {
+    handleAddProductToCart,
+  } = useCart()
   const handleAddToCart = () => {
-    onAdd(bookData, qty);
+    handleAddProductToCart(bookWithQuantity);
+    setDisable(!disable);
   };
   const handleBuyNow = () => {
-    onAdd(bookData, qty);
-    setShowCart(true);
-    router.push('/cart');
+    handleAddProductToCart(bookWithQuantity);
+    setTimeout(() => {
+      router.push("/cart");
+    }, 0.001);
   };
   return (
     <div>
@@ -43,29 +54,37 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
               {bookData.details}
             </h4>
             <p className="pt-4 font-bold">₦{bookData.price}</p>
-            <div className="flex gap-4 mt-4 items-center ">
-              <h3>Quantity:</h3>
-              <p className="border border-gray-500 p-2 flex">
-                <span
-                  className="cursor-pointer pr-2 pl-2 border-r border-gray-500 py-2"
-                  onClick={decQty}
-                >
-                  <AiOutlineMinus className="text-red-500" />
-                </span>
-                <span className="pl-4 pr-4 border-r border-gray-500 py-1">
-                  {qty}
-                </span>
-                <span
-                  className="cursor-pointer pl-4 pr-2 py-2"
-                  onClick={incQty}
-                >
-                  <AiOutlinePlus className="text-green-500" />
-                </span>
-              </p>
-            </div>
+            {disable ? (
+              <div className="flex gap-4 mt-4 items-center ">
+                <h3>Quantity:</h3>
+                <p className="border border-gray-500 p-2 flex">
+                  <span
+                    className="cursor-pointer pr-2 pl-2 border-r border-gray-500 py-2"
+                    onClick={() =>
+                      setQty((prevQty) => {
+                        if (prevQty - 1 < 1) return 1;
+                        return prevQty - 1;
+                      })
+                    }
+                  >
+                    <AiOutlineMinus className="text-red-500" />
+                  </span>
+                  <span className="pl-4 pr-4 border-r border-gray-500 py-1">
+                    {qty}
+                  </span>
+                  <span
+                    className="cursor-pointer pl-4 pr-2 py-2"
+                    onClick={() => setQty((prevQty) => prevQty + 1)}
+                  >
+                    <AiOutlinePlus className="text-green-500" />
+                  </span>
+                </p>
+              </div>
+            ) : null}
             <div className="flex md:gap-10 gap-4">
               <div
-                className="flex mt-4 justify-center items-center gap-8 bg-red-500 text-white hover:bg-red-400 rounded-lg md:w-64 w-52 h-14 cursor-pointer"
+                className={`flex ${disable ? "block" : "hidden"
+                  } mt-4 justify-center items-center gap-8 bg-red-500 text-white hover:bg-red-400 rounded-lg md:w-64 w-52 h-14 cursor-pointer`}
                 onClick={handleAddToCart}
               >
                 <FaCartArrowDown className="text-white" fontSize="2em" />
