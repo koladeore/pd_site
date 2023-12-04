@@ -2,7 +2,6 @@
 declare const window: {
     Email: any;
 } & Window;
-
 import { PaystackButton } from "react-paystack";
 import { useState } from "react";
 import { useCart } from "@/hooks/useCart";
@@ -11,38 +10,13 @@ import toast from "react-hot-toast";
 
 const PayStack = () => {
     const { cartTotalAmount, handleClearCart } = useCart();
-    // const publicKey = process.env.apiKey || '';
-    const publicKey = "pk_test_40c8515e536010a16d5a9202fabedceb8f0dc8b6"
-    // const amount: number = 1000000;
+    const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_KEY as string;
     const amount = cartTotalAmount * 100
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const router = useRouter();
-    const handleSubmit = (event?: React.FormEvent<HTMLFormElement>) => {
-        if (event) {
-            event.preventDefault();
-        }
-        if (window.Email) {
-            window.Email.send({
-                Host: "smtp.gmail.com",
-                Username: "koladeore@gmail.com",
-                Password: "5379944A4B4905A94DAF58691C93FB1360BF",
-                To: "koladeore@gmail.com",
-                From: "koladeore@gmail.com",
-                Subject: "A BOOK WAS GOTTEN FROM YOUR WEBSITE ",
-                Body: `${name} WITH ${email},${address},${phone} BOUGHT A BOOK TOTAL AMOUNT IS ₦${cartTotalAmount} `,
-                Port: 2525,
-            }).then((message: any) => {
-                console.log(message);
-                toast.success("Response received");
-            });
-        } else {
-            toast.error("kindly fill in correct details");
-        }
-    };
-
     const componentProps = {
         email,
         amount,
@@ -70,7 +44,6 @@ const PayStack = () => {
         onSuccess: () =>{
             router.push("/cart");
             handleClearCart();
-            handleSubmit();
             toast.success("Payment received");
         },
     };

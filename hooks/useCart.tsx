@@ -12,7 +12,6 @@ interface Props {
 export const CartContext = createContext<any | null>(null);
 
 export const CartContextProvider = (props: Props) => {
-    // const [qty, setQty] = useState(1);
     const [open, setOpen] = useState(false);
     const [cartTotalQty, setCartTotalQty] = useState(0);
     const [cartTotalAmount, SetCartTotalAmount] = useState(0);
@@ -40,6 +39,10 @@ export const CartContextProvider = (props: Props) => {
                 setCartTotalQty(qty);
                 SetCartTotalAmount(total);
             }
+            else {
+                setCartTotalQty(0);
+                SetCartTotalAmount(0);
+            }
         };
         getTotals();
     }, [cartProducts]);
@@ -53,23 +56,29 @@ export const CartContextProvider = (props: Props) => {
                 );
 
                 if (existingProductIndex !== -1) {
-                    // If the product is already in the cart, update its quantity
                     updatedCart = [...prev];
-                    ++updatedCart[existingProductIndex].quantity;
-                    toast.success("Cart Quantity Increased");
+                    toast.success("Product already in cart");
                     localStorage.setItem(
                         "CartItems",
                         JSON.stringify(updatedCart)
                     );
                     return updatedCart;
                 } else {
-                    return (updatedCart = [...prev, product]);
+                    updatedCart = [...prev, product];
+                    localStorage.setItem(
+                        "CartItems",
+                        JSON.stringify(updatedCart)
+                    );
+                    toast.success("Product Added to Cart");
+
+                    return updatedCart;
                 }
             } else {
                 updatedCart = [product];
+                toast.success("Product Added to Cart");
+                localStorage.setItem("CartItems", JSON.stringify(updatedCart));
             }
-            toast.success("Product Added to Cart");
-            localStorage.setItem("CartItems", JSON.stringify(updatedCart));
+
             return updatedCart;
         });
     }, []);
@@ -79,7 +88,6 @@ export const CartContextProvider = (props: Props) => {
                 const filteredProducts = cartProducts.filter((item: any) => {
                     return product._id !== item._id;
                 });
-                console.log("filvrer valut", filteredProducts);
                 if (filteredProducts.length === 0) {
                     setCartProducts(null);
                     localStorage.setItem("CartItems", JSON.stringify(null));
@@ -89,9 +97,7 @@ export const CartContextProvider = (props: Props) => {
                         "CartItems",
                         JSON.stringify(filteredProducts)
                     );
-
                     toast.success("Product Removed");
-                    console.log("this is filter", filteredProducts);
                 }
             }
         },

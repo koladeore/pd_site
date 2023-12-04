@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
+import { useState, useEffect } from "react";
 
 interface CartItem {
   _id: string;
@@ -26,8 +27,20 @@ const CartClient = () => {
     handleCartQtyIncrease,
     handleCartQtyDecrease,
     handleRemoveProductFromCart: onRemove,
+    handleClearCart
   } = useCart();
-
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000)
+    return () => clearTimeout(timeout);
+  }, []);
+  if (loading) {
+    return <div className="w-full h-full flex justify-center items-center pt-32 mb-64">
+      <div className="animate-spin rounded-full border-t-4 border-gray-300 border-solid h-12 w-12"></div>
+    </div>
+  }
   return (
     <div className="p-10 md:mb-10 mb-0">
       <div className="">
@@ -51,10 +64,12 @@ const CartClient = () => {
         {cartItems ? (
           <>
             <div>
-              <h1 className="text-black text-3xl font-bold">SHOPPING CART</h1>
+              <div className="flex items-center">
+                <h1 className="text-black md:text-3xl text-2xl font-bold">SHOPPING CART</h1>
+                <button onClick={() => handleClearCart()} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded md:w-[170px] w-[120px] ml-16 md:ml-48">Clear Cart</button>
+              </div>
               <div className="border-t border-gray-400 h-0 md:w-[600px] w-82 mt-2"></div>
             </div>
-
             <div className="flex justify-between flex-col md:flex-row">
               <div className="pt-2">
                 {cartItems.map((item: CartItem) => (

@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BookData } from "@/app/lib/interface";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
@@ -8,11 +8,12 @@ import { FaCartArrowDown, FaShoppingBasket } from "react-icons/fa";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 interface BookDetailsContentProps {
-    bookData: BookData;
+  bookData: BookData;
 }
-const BookDetailContent = ({ bookData }: BookDetailsContentProps) => { 
+const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
   const [qty, setQty] = useState(1);
   const [disable, setDisable] = useState(true);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const bookWithQuantity = {
     ...bookData,
@@ -21,16 +22,46 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
   const {
     handleAddProductToCart,
   } = useCart()
+  useEffect(() => {
+    const cartItemsString: any = localStorage.getItem("CartItems");
+    if (cartItemsString && cartItemsString !== null) {
+      try {
+        const cartItems: any[] = JSON.parse(cartItemsString);
+
+        if (Array.isArray(cartItems)) {
+          const existingProductIndex = cartItems.findIndex(
+            (item: any) => item._id === bookWithQuantity._id
+          );
+
+          if (existingProductIndex !== -1) {
+            // If the product is already in the cart, update its quantity
+            setDisable(!disable);
+          }
+        } else {
+          
+        }
+      } catch (error) {
+        console.error("Error parsing cart items:", error);
+      }finally {
+        setLoading(false);
+      }
+    }
+  }, []);
   const handleAddToCart = () => {
     handleAddProductToCart(bookWithQuantity);
     setDisable(!disable);
   };
   const handleBuyNow = () => {
-    // handleAddProductToCart(bookWithQuantity);
     setTimeout(() => {
       router.push("/cart");
     }, 0.001);
   };
+  if (loading) {
+    return <div className="w-full h-full flex justify-center items-center pt-32">
+      <div className="animate-spin rounded-full border-t-4 border-gray-300 border-solid h-12 w-12"></div>
+    </div>
+  }
+
   return (
     <div>
       <div className="bg-white pt-20 pb-20">
@@ -93,7 +124,8 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
                 </button>
               </div>
               <div
-                className="flex mt-4 justify-center items-center gap-8 bg-transparent border-red-500  border text-red hover:bg-red-100 rounded-lg md:w-64 w-52 h-14 cursor-pointer"
+                className={`flex ${disable ? "hidden" : "block"
+                  } mt-4 justify-center items-center gap-8 bg-transparent border-red-500  border text-red hover:bg-red-100 rounded-lg md:w-64 w-52 h-14 cursor-pointer`}
                 onClick={handleBuyNow}
               >
                 <FaShoppingBasket className="text-red-500" fontSize="2em" />
