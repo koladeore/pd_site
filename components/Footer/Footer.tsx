@@ -7,6 +7,7 @@ import {
   AiOutlineMail,
   AiFillPhone,
 } from "react-icons/ai";
+import { FaTiktok } from "react-icons/fa";
 import ScrollAnimation from "../ScrollAnimation/ScrollAnimation";
 
 const Footer = () => {
@@ -72,11 +73,23 @@ const Footer = () => {
                     />
                   </a>
                 </li>
-              </ul>
-            </div>
-
+                <li>
+                  <a
+                    href="https://www.tiktok.com/@officialdavidmaka?_t=8htqzXuCtan&_r=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaTiktok
+                      className="text-white hover:text-pink-400"
+                        fontSize="2em"
+                      />
+                  </  a>
+                </  li>
+              </ul>  
+            </div>  
+  
             <div className="w-full md:w-1/2 lg:w-1/4 mb-10">
-              <h2 className="text-xl font-bold mb-4">Contact</h2>
+              <h2   className="text-xl font-bold mb-4">Contact</h2>
               <div className="flex pb-4">
                 <AiOutlineMail className="text-white" fontSize="1.5em" />
                 <a

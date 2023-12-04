@@ -6,8 +6,8 @@ import ScrollAnimation from "@/components/ScrollAnimation/ScrollAnimation";
 export default function Home() {
   return (
     <div>
-      <CustomSlider />
       <ScrollAnimation>
+        <CustomSlider />
         <Messages />
         <HomeContent />
       </ScrollAnimation>

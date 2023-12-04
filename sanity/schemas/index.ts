@@ -1,2 +1,3 @@
 import audioMessage from "./audioMessage"
-export const schemaTypes = [audioMessage]
+import books from "./books"
+export const schemaTypes = [audioMessage, books]

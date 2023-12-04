@@ -3,7 +3,9 @@ import { Rubik } from 'next/font/google'
 import './globals.css'
 import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
-import { AppProvider } from '../context/AppContext'
+import CartProvider from "@/Providers/CartProvider";
+import { Toaster } from 'react-hot-toast';
+import Script from "next/script";
 
 const rubik = Rubik({ subsets: ['latin'] })
 
@@ -20,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={rubik.className}>
-        <AppProvider>
+        <Script src="https://smtpjs.com/v3/smtp.js" />
+        <CartProvider>
+          <Toaster /> 
           <NavBar />
           <main>{children}</main>
           <Footer />
-        </AppProvider>
+        </CartProvider>
       </body>
     </html>
   )

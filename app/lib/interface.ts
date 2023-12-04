@@ -8,3 +8,13 @@ export interface AudioData {
     current: string;
   };
 }
+export interface BookData{
+   _id: string;
+  name: string;
+  slug: {
+    current: string;
+  };
+  price: number;
+  image: string;
+  details: string;
+}

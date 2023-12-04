@@ -4,20 +4,28 @@ import Link from "next/link";
 import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import { motion } from 'framer-motion';
-import { useAppContext } from "@/context/AppContext";
+import { useCart } from "@/hooks/useCart";
+import { AiOutlineShopping } from 'react-icons/ai'
+import { useRouter } from "next/navigation";
 
 const NavBar = () => {
-  const {open, setOpen} = useAppContext();
+  const {
+    open,
+    setOpen,
+    cartTotalQty: totalQuantities,
+  } = useCart();
+  const router = useRouter();
+  const goToCart = () => {
+    setOpen(false);
+    router.push('/cart');
+  };
   return (
     <motion.nav 
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
       className="bg-white sticky top-0 w-full shadow-xl z-50"
     >
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between items-center h-16">
-          <Link href="/" className="">
+          <Link href="/" className="" onClick={() => setOpen(false)}>
             <Image
               src="/assets/pd_logo.png"
               alt="logo"
@@ -25,22 +33,30 @@ const NavBar = () => {
               width={70}
             />
           </Link>
-          <div className="text-3xl md:hidden cursor-pointer" onClick={() => setOpen(!open)}>
-            {open ? (
-              <Image
-                src="/assets/close-svgrepo.svg"
-                alt="hamburger-menu"
-                height={24}
-                width={24}
-              />
-            ) : (
-              <Image
-                src="/assets/hamburger-menu.svg"
-                alt="hamburger-menu"
-                width={24}
-                height={24}
-              />
-            )}
+          <div className="flex items-center md:hidden">
+            <div onClick={goToCart} className="pr-2 cursor-pointer">
+                <AiOutlineShopping fontSize="2em" className="relative" />
+                <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
+                  <span className="text-white text-sm font-light">{totalQuantities}</span>
+                </div>
+            </div>
+            <div className="text-3xl cursor-pointer" onClick={() => setOpen(!open)}>
+              {open ? (
+                <Image
+                  src="/assets/close-svgrepo.svg"
+                  alt="hamburger-menu"
+                  height={24}
+                  width={24}
+                />
+              ) : (
+                <Image
+                  src="/assets/hamburger-menu.svg"
+                  alt="hamburger-menu"
+                  width={24}
+                  height={24}
+                />
+              )}
+            </div>
           </div>
         </div>
         <ul className="md:flex hidden uppercase items-center gap-8 font-[Poppins]">
@@ -61,9 +77,17 @@ const NavBar = () => {
             </Link>
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/" className="py-7 px-3 inline-block">
-              Contact
+            <Link href="/books" className="py-7 px-3 inline-block">
+              Books
             </Link>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
+            <div onClick={goToCart} className="py-7 px-3 inline-block cursor-pointer">
+              <AiOutlineShopping fontSize="2em" className="relative" />
+              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
+                <span className="text-white text-sm font-light">{totalQuantities}</span>
+              </div>
+            </div>
           </motion.li>
         </ul>
         {/* Mobile nav */}
@@ -90,8 +114,8 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/" className="py-7 px-3 inline-block">
-              Contact
+            <Link href="/books" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
+              Books
             </Link>
           </li>
         </ul>
