@@ -18,6 +18,7 @@ const PayStack = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
     const router = useRouter();
     const handleSubmit = (event?: React.FormEvent<HTMLFormElement>) => {
         if (event) {
@@ -25,13 +26,13 @@ const PayStack = () => {
         }
         if (window.Email) {
             window.Email.send({
-                Host: "smtp.elasticemail.com",
+                Host: "smtp.gmail.com",
                 Username: "koladeore@gmail.com",
                 Password: "5379944A4B4905A94DAF58691C93FB1360BF",
-                To: "davidvictor297@duck.com",
+                To: "koladeore@gmail.com",
                 From: "koladeore@gmail.com",
                 Subject: "A BOOK WAS GOTTEN FROM YOUR WEBSITE ",
-                Body: `${name} WITH ${email} BOUGHT A BOOK TOTAL AMOUNT IS N${cartTotalAmount} `,
+                Body: `${name} WITH ${email},${address},${phone} BOUGHT A BOOK TOTAL AMOUNT IS ₦${cartTotalAmount} `,
                 Port: 2525,
             }).then((message: any) => {
                 console.log(message);
@@ -57,6 +58,11 @@ const PayStack = () => {
                     variable_name: "phone",
                     value: phone,
                 },
+                {
+                    display_name: "Address",
+                    variable_name: "Address",
+                    value: address,
+                },
             ],
         },
         publicKey,
@@ -64,25 +70,20 @@ const PayStack = () => {
         onSuccess: () =>{
             router.push("/cart");
             handleClearCart();
+            handleSubmit();
             toast.success("Payment received");
         },
     };
 
     return (
-        <div className="App text-center font-Roboto tracking-wider">
-            <div className="flex flex-row mx-auto w-96 h-72 bg-white shadow-2xl">
-                <div className="w-1/2 relative">
-                    <div className="absolute top-0 bottom-0 left-0 right-0 opacity-20 bg-gray-800 z-10"></div>
-                    <div className="absolute bottom-0 mb-5 ml-4 text-left text-green-500">
-                        <p className="text-xl">Dancing Shoes</p>
-                        <p>{cartTotalAmount}</p>
-                    </div>
-                </div>
-                <div className="w-1/2 flex flex-col justify-center bg-green-500 p-5">
-                    <form>
-                        <div className="mb-5">
+        <div className="flex items-center justify-center mb-4 mt-4 ">
+            <div className="flex items-center justify-center w-[500px]  h-[500px]">
+                <div className="bg-white-500 p-4 md:p-8 rounded-lg shadow-2xl">
+                    <p className="flex items-center justify-center">Total: ₦{cartTotalAmount}</p>
+                    <p className="flex items-center justify-center text-sm text-gray-400">It is require to fill the form</p>
+                    <form className="w-full">
+                        <div className="mb-4 mt-4">
                             <label
-                                className="text-left text-white text-xs uppercase mb-2"
                                 htmlFor="name"
                             >
                                 Name
@@ -92,12 +93,11 @@ const PayStack = () => {
                                 type="text"
                                 id="name"
                                 onChange={(e) => setName(e.target.value)}
-                                className="bg-transparent border-1 border-gray-300 rounded p-2 text-white h-9"
+                                className="w-full p-2 border rounded"
                             />
                         </div>
-                        <div className="mb-5">
+                        <div className="mb-4">
                             <label
-                                className="text-left text-white text-xs uppercase mb-2"
                                 htmlFor="email"
                             >
                                 Email
@@ -107,12 +107,11 @@ const PayStack = () => {
                                 type="email"
                                 id="email"
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="bg-transparent border-1 border-gray-300 rounded p-2 text-white h-9"
+                                className="w-full p-2 border rounded"
                             />
                         </div>
-                        <div className="mb-5">
+                        <div className="mb-4">
                             <label
-                                className="text-left text-white text-xs uppercase mb-2"
                                 htmlFor="phone"
                             >
                                 Phone
@@ -122,13 +121,27 @@ const PayStack = () => {
                                 type="text"
                                 id="phone"
                                 onChange={(e) => setPhone(e.target.value)}
-                                className="bg-transparent border-1 border-gray-300 rounded p-2 text-white h-9"
+                                className="w-full p-2 border rounded"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="address"
+                            >
+                                Address
+                            </label>
+                            <input
+                                required
+                                type="text"
+                                id="address"
+                                onChange={(e) => setAddress(e.target.value)}
+                                className="w-full p-2 border rounded"
                             />
                         </div>
                     </form>
                     <PaystackButton
                         {...componentProps}
-                        className="cursor-pointer text-center text-xs uppercase bg-gray-600 font-bold text-white border-none rounded h-9 mt-8"
+                        className="mt-2 cursor-pointer text-center text-xs uppercase bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
                     />
                 </div>
             </div>

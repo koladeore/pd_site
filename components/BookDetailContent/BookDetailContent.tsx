@@ -26,7 +26,7 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
     setDisable(!disable);
   };
   const handleBuyNow = () => {
-    handleAddProductToCart(bookWithQuantity);
+    // handleAddProductToCart(bookWithQuantity);
     setTimeout(() => {
       router.push("/cart");
     }, 0.001);

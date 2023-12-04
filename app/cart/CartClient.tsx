@@ -32,7 +32,7 @@ const CartClient = () => {
     <div className="p-10 md:mb-10 mb-0">
       <div className="">
         {!cartItems ? (
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mt-2">
             <AiOutlineShopping fontSize="5em" />
             <h3 className="text-black text-xl font-normal pt-2">
               Your shopping bag is empty
