@@ -22,31 +22,31 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
   const {
     handleAddProductToCart,
   } = useCart()
-  useEffect(() => {
-    const cartItemsString: any = localStorage.getItem("CartItems");
-    if (cartItemsString && cartItemsString !== null) {
-      try {
-        const cartItems: any[] = JSON.parse(cartItemsString);
+  // useEffect(() => {
+  //   const cartItemsString: any = localStorage.getItem("CartItems");
+  //   if (cartItemsString && cartItemsString !== null) {
+  //     try {
+  //       const cartItems: any[] = JSON.parse(cartItemsString);
 
-        if (Array.isArray(cartItems)) {
-          const existingProductIndex = cartItems.findIndex(
-            (item: any) => item._id === bookWithQuantity._id
-          );
+  //       if (Array.isArray(cartItems)) {
+  //         const existingProductIndex = cartItems.findIndex(
+  //           (item: any) => item._id === bookWithQuantity._id
+  //         );
 
-          if (existingProductIndex !== -1) {
-            // If the product is already in the cart, update its quantity
-            setDisable(!disable);
-          }
-        } else {
+  //         if (existingProductIndex !== -1) {
+  //           // If the product is already in the cart, update its quantity
+  //           setDisable(!disable);
+  //         }
+  //       } else {
           
-        }
-      } catch (error) {
-        console.error("Error parsing cart items:", error);
-      }finally {
-        setLoading(false);
-      }
-    }
-  }, []);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error parsing cart items:", error);
+  //     }finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  // }, []);
   const handleAddToCart = () => {
     handleAddProductToCart(bookWithQuantity);
     setDisable(!disable);
