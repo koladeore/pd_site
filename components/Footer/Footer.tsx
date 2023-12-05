@@ -114,7 +114,7 @@ const Footer = () => {
               <h2 className="text-xl font-bold mb-4">About</h2>
               <p>
                 David Makanjuola is a strategic leadership trainer, a
-                charismatic pastor, a theologian, and an author.
+                charismatic pastor,theologian, and an author.
               </p>
               <div className="pt-10">
                 <Link
