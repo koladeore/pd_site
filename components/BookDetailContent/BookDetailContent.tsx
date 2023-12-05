@@ -46,7 +46,7 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
         setLoading(false);
       }
     }
-  }, []);
+  }, [bookWithQuantity._id]);
   const handleAddToCart = () => {
     handleAddProductToCart(bookWithQuantity);
     setDisable(!disable);
