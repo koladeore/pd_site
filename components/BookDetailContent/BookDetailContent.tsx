@@ -13,7 +13,6 @@ interface BookDetailsContentProps {
 const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
   const [qty, setQty] = useState(1);
   const [disable, setDisable] = useState(true);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const bookWithQuantity = {
     ...bookData,
@@ -43,7 +42,6 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
       } catch (error) {
         console.error("Error parsing cart items:", error);
       }
-      setLoading(false);
     }
   }, []);
   const handleAddToCart = () => {
@@ -55,11 +53,6 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
       router.push("/cart");
     }, 0.001);
   };
-  if(loading) {
-    return <div className="w-full h-full flex justify-center items-center pt-32">
-      <div className="animate-spin rounded-full border-t-4 border-gray-300 border-solid h-12 w-12"></div>
-    </div>
-  }
   return (
     <div>
       <div className="bg-white pt-20 pb-20">
