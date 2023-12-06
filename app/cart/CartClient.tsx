@@ -65,7 +65,7 @@ const CartClient = () => {
           <>
             <div>
               <div className="flex items-center">
-                <h1 className="text-black md:text-3xl text-2xl font-bold">SHOPPING CART</h1>
+                <h1 className="text-black md:text-3xl text-base font-bold">SHOPPING CART</h1>
                 <button onClick={() => handleClearCart()} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded md:w-[170px] w-[120px] ml-16 md:ml-48">Clear Cart</button>
               </div>
               <div className="border-t border-gray-400 h-0 md:w-[600px] w-82 mt-2"></div>
@@ -92,7 +92,7 @@ const CartClient = () => {
                           <h4 className="pt-8">₦{item.price}</h4>
                         </div>
                       </div>
-                      <div className="md:pl-64 pl-12">
+                      <div className="md:pl-64 pl-0">
                         <div className="pl-20">
                           <button
                             type="button"
@@ -132,7 +132,7 @@ const CartClient = () => {
               </div>
               <div>
                 <div>
-                  <div className="mr-52 rounded-lg bg-gray-100 md:w-[200px] w-[200px] h-[110px] md:h-[200px] p-4 md:mt-0 mt-8 ml-[100px] md:ml-0">
+                  <div className="mr-52 rounded-lg bg-gray-100 md:w-[200px] w-[200px] h-[110px] md:h-[200px] p-4 md:mt-0 mt-8 ml-[50px] md:ml-0">
                     <div className="flex justify-around">
                       <h3 className="font-bold text-black">Subtotal:</h3>
                       <h3 className="font-bold text-black">₦{totalPrice}</h3>

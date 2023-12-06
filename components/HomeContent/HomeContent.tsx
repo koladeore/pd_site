@@ -17,7 +17,7 @@ const HomeContent = () => {
                 width={500}
               />
             </div>
-            <div className="pb-10">
+            <div className="pb-10 md:pl-0 pl-20">
               <div className="flex items-center gap-1">
                 <AiFillYoutube className="text-white" fontSize="3.5em" />
                 <h1 className="text-white md:text-4xl text-2xl md:pb-4">

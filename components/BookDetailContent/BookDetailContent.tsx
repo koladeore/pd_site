@@ -57,7 +57,7 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
     <div>
       <div className="bg-white pt-20 pb-20">
         <div className="flex justify-around items-center flex-col md:flex-row">
-          <div className="rounded-lg bg-gray-300 md:w-[500px] w-[400px] h-[450px]">
+          <div className="rounded-lg bg-gray-300 md:w-[500px] w-[300px] md:h-[450px] h-[300px]">
             <div className="">
               <Image
                 src={bookData.image}
