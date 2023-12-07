@@ -38,9 +38,9 @@ const Messages = async () => {
     return (
       <div>
         <ScrollAnimation>
-          <div className="bg-white pl-16 md:pl-32 pt-10 grid md:grid-cols-3">
+          <div className="bg-white pt-10 grid md:grid-cols-3">
             {slicedData.map((audio) => (
-              <AudioCard key={audio.title} audio={audio} />
+              <AudioCard key={audio.title} audio={audio}/>
             ))}
           </div>
         </ScrollAnimation>

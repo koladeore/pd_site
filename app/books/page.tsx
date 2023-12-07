@@ -21,7 +21,7 @@ const BookPage = async () => {
     return (
       <div>
         <ScrollAnimation>
-          <div className='bg-white md:pl-32 pl-16 pt-10 grid md:grid-cols-3 pb-10'>
+          <div className='bg-white pt-10 grid md:grid-cols-3 pb-10'>
             {data.map((book) => (<BookCard key={book._id} book={book} />))}
           </div>
         </ScrollAnimation>

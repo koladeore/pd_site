@@ -11,7 +11,7 @@ interface bookDataProps {
 }
 const BookCard = ({ book: { name, image, slug, price } }: bookDataProps) => {
     return (
-        <div className="">
+        <div className="flex flex-col items-center">
             <Link href={`/bookDetails/${slug.current}`}>
                 <motion.div
                     whileInView={{ opacity: 1 }}

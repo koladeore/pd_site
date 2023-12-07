@@ -36,7 +36,7 @@ const allMessages = async () => {
                         <p className="pt-4 text-gray-400 text-xl md:pl-0 pl-10">And we all, with unveiled face, beholding the glory of the Lord,</p>
                         <p className="pt-0 text-gray-400 text-xl md:pl-0 pl-10">are being transformed into the same image from one degree of glory to another.</p>
                     </div>
-                    <div className="bg-white pl-16 md:pl-32 pt-10 grid md:grid-cols-3">
+                    <div className="bg-white pt-10 grid md:grid-cols-3">
                         {data.map((audio) => (
                             <AudioCard key={audio.title} audio={audio} />
                         ))}

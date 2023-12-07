@@ -40,7 +40,7 @@ const YoutubePlayer = ({ audio, iconSize = '1rem' }: YoutubePlayerProps) => {
                 isOpen={modalIsOpen}
                 onRequestClose={handleCloseModal}
                 contentLabel="YouTube Video Modal"
-                className="fixed inset-0 flex items-center justify-center md:w-[560px] w-[400px] ml-[50px] h-[315px] md:ml-[350px] mt-[200px]"
+                className="fixed inset-0 flex items-center justify-center md:w-[560px] w-full pr-4 pl-4 h-[400px] md:ml-[350px] mt-[200px] md:mr-4"
                 overlayClassName="fixed inset-0 bg-black opacity-95"
             >
                 {isLoading ? (

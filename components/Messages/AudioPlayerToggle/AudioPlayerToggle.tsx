@@ -25,13 +25,13 @@ const AudioPlayerToggle = ({ audio, iconSize = '1rem' }: AudioPlayerToggleProps)
             </button>
 
             {isAudioVisible && (
-                <div className={iconSize !== '1rem' ? "ml-[-100px]" : "ml-[-100px] p-4"}>
-                    <div className={iconSize !== '1rem' ? "md:w-[60%] w-[80%] h-16 absolute pl-4" : "w-96 h-16 absolute pl-4"}>
+                <div className={iconSize !== '1rem' ? "md:ml-[-100px] ml-[-105px]" : "md:ml-[-130px] ml-[-140px] p-4"}>
+                    <div className={iconSize !== '1rem' ? "md:w-[60%] w-[90%] h-16 absolute md:pl-4 pl-0" : "w-96 h-16 absolute md:pl-4 pl-0"}>
                         <AudioPlayer
                             autoPlay
                             src={audio.file}
                             layout="horizontal-reverse"
-                            className={iconSize !== '1rem' ? "mt-[-110px] ml-[-60px]" : ""}
+                            className={iconSize !== '1rem' ? "mt-[-110px] md:ml-[-60px] ml-[0px]" : ""}
                         />
                     </div>
                 </div>

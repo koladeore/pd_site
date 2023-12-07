@@ -7,7 +7,7 @@ const About = () => {
     <div className="bg-white">
       <ScrollAnimation>
         <div>
-          <div className="bg-gray-500 md:h-[400px] h-[285px] mb-8">
+          <div className="bg-gray-500 md:h-[400px] h-auto mb-8">
             <div className="flex items-center justify-center relative">
               <Image
                 src="/assets/about.png"
@@ -16,7 +16,7 @@ const About = () => {
                 width={600}
                 className="opacity-70 md:pt-0 pt-6"
               />
-              <h1 className="text-white md:text-5xl text-2xl font-bold absolute pt-12 md:pt-0">
+              <h1 className="text-white text-center md:text-5xl text-2xl font-bold absolute pt-12 md:pt-0">
                 Pastor David Makanjuola
               </h1>
             </div>
@@ -61,9 +61,9 @@ const About = () => {
                   He is married to Mrs. Deborah Makanjuola, his partner in life and purpose, and blessed with a daughter.
                 </p>
               </div>
-              <div className="pl-10 md:pl-0">
+              <div className="mx-auto">
                 <div className="bg-[#1f1f21] h-[405px] md:w-[400px] w-[300px] mt-10">
-                  <div className="md:pl-12 pl-2">
+                  <div className="md:pl-12 pl-0">
                     <Image
                       src="/assets/pd_aboutImage.png"
                       alt="about"

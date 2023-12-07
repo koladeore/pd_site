@@ -66,7 +66,7 @@ const CartClient = () => {
             <div>
               <div className="flex items-center">
                 <h1 className="text-black md:text-3xl text-base font-bold">SHOPPING CART</h1>
-                <button onClick={() => handleClearCart()} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded md:w-[170px] w-[120px] ml-16 md:ml-48">Clear Cart</button>
+                <button onClick={() => handleClearCart()} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded md:w-[170px] w-[120px] ml-10 md:ml-48">Clear Cart</button>
               </div>
               <div className="border-t border-gray-400 h-0 md:w-[600px] w-82 mt-2"></div>
             </div>
@@ -93,7 +93,7 @@ const CartClient = () => {
                         </div>
                       </div>
                       <div className="md:pl-64 pl-0">
-                        <div className="pl-20">
+                        <div className="md:pl-20 pl-10">
                           <button
                             type="button"
                             className=""
@@ -107,7 +107,7 @@ const CartClient = () => {
                             />
                           </button>
                         </div>
-                        <div className="border border-gray-500 p-0 flex mt-4">
+                        <div className="border border-gray-500 p-0 flex mt-4 md:ml-0 ml-[-20px]">
                           <span
                             className="cursor-pointer pr-2 pl-2 border-r border-gray-500 py-2"
                             onClick={() => handleCartQtyDecrease(item)}

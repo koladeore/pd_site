@@ -45,9 +45,9 @@ const AudioDetailsPage = async ({params}: {
         const audioData = (await getData(slug)) as AudioData;
         return (
             <div className="bg-white pt-4 pb-10 md:pl-10 pl-1">
-                <h1 className="text-2xl font-bold text-pink-500">{audioData.title}</h1>
+                <h1 className="md:text-2xl text-xl font-bold text-pink-500">{audioData.title}</h1>
                 <div className="border-t border-gray-300 h-0 w-full mt-4 pb-2"></div>
-                <div className="pt-4">
+                <div className="pt-4 md:mr-0 md:ml-0 mr-4 ml-4">
                     <Image
                         src={urlFor(audioData.image).url()}
                         alt="Image"
@@ -57,7 +57,7 @@ const AudioDetailsPage = async ({params}: {
                     />
                 </div>
                 <div>
-                    <div className="flex gap-8 pt-4 items-center">
+                    <div className="flex md:gap-8 gap-2 pt-4 items-center">
                         <div className="border border-solid border-gray-300 p-2">
                             <YoutubePlayer audio={audioData} iconSize="1.5rem" />
                         </div>
@@ -69,7 +69,7 @@ const AudioDetailsPage = async ({params}: {
                         </div>
                     </div>
                 </div>
-                <p className="pt-4 text-gray-700 text-sm font-normal leading-6 md:w-[550px] w-[450px]">
+                <p className="pt-4 text-gray-700 text-sm font-normal leading-6 md:w-[550px] w-auto">
                     {audioData.description}
                 </p>
             </div>
