@@ -29,7 +29,7 @@ const BookPage = async () => {
     );
   } catch (error) {
     console.error("Error in BookPage component:", error);
-    return <div>Error loading book data</div>;
+    return <div>Error loading the book data</div>;
   }
 }
 
