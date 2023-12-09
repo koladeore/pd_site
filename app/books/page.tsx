@@ -3,6 +3,7 @@ import { client } from '../lib/sanity';
 import { BookData } from '../lib/interface';
 import BookCard from '@/components/BookCard/BookCard';
 import ScrollAnimation from '@/components/ScrollAnimation/ScrollAnimation';
+import Ebooks from '@/components/Ebooks/Ebooks';
 
 async function getProductData() {
   try {
@@ -21,9 +22,10 @@ const BookPage = async () => {
     return (
       <div>
         <ScrollAnimation>
-          <div className='bg-white pt-10 grid md:grid-cols-3 pb-10'>
+          <div className='bg-white grid md:grid-cols-3'>
             {data.map((book) => (<BookCard key={book._id} book={book} />))}
           </div>
+          <Ebooks />
         </ScrollAnimation>
       </div>
     );
