@@ -3,7 +3,6 @@ import { client } from "@/app/lib/sanity";
 import ScrollAnimation from "../ScrollAnimation/ScrollAnimation";
 import { EBookData } from "@/app/lib/interface";
 import Image from "next/image";
-import ebooks from "@/sanity/schemas/ebooks";
 import { urlFor } from "@/app/lib/sanityImageUrl";
 
 async function getData() {
