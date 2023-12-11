@@ -1,6 +1,6 @@
 export  default{
-    name: 'books',
-    title: 'Books',
+    name: 'ebooks',
+    title: 'EBooks',
     type: 'document',
     fields: [
         {
@@ -12,28 +12,19 @@ export  default{
             },
         },
         { 
-            name: 'name',
-            title: 'Name',
+            name: 'title',
+            title: 'Title',
             type: 'string',
-        },
-        { 
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-            source: 'name',
-            maxLength: 90,
-            }
-        },
-        { 
-            name: 'price',
-            title: 'Price',
-            type: 'number',
         },
         { 
             name: 'details',
             title: 'Details',
             type: 'text',
+        },
+        {
+            name: 'bookFile',
+            title: 'Book File',
+            type: 'file',
         },
     ],
 };

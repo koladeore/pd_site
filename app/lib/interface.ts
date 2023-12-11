@@ -18,3 +18,9 @@ export interface BookData{
   image: string;
   details: string;
 }
+export interface EBookData{
+  title: string;
+  image: string;
+  details: string;
+  file: string;
+}
