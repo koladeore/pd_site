@@ -20,8 +20,8 @@ const BookCard = ({ book: { name, image, slug, price } }: bookDataProps) => {
                     className="cursor-pointer text-blue-800 hover:text-blue-600 pt-10">
                     <Image
                         src={urlFor(image).url()}
-                        width={250}
-                        height={250}
+                        width={200}
+                        height={200}
                         className="rounded-lg bg-gray-300 transform scale-100 transition-transform duration-500 ease-in"
                         alt="book-card"
                     />

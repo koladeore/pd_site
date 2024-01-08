@@ -47,7 +47,7 @@ const NavLinks = () => {
             </h1>
             {topLevelLink.submenu && (
               <div>
-                <div className="absolute top-13 -mt-5 hidden group-hover:md:block hover:md:block">
+                <div className="absolute top-13 -mt-5 hidden group-hover:md:block hover:md:block transition-all duration-300 ease-in-out">
                   <div className="py-3">
                     <div className="w-4 h-4 left-3 absolute mt-3 bg-white rotate-45"></div>
                   </div>
@@ -56,7 +56,7 @@ const NavLinks = () => {
                       <div key={sublink.name}>
                         <ul className="text-lg font-semibold">
                           <li className="text-sm text-gray-600 my-2.5">
-                            <Link href={sublink.link} className="hover:text-primary">
+                            <Link href={sublink.link} className="hover:text-primary transition-all duration-300 ease-in-out">
                               {sublink.name}
                             </Link>
                           </li>

@@ -55,14 +55,14 @@ const BookDetailContent = ({ bookData }: BookDetailsContentProps) => {
   };
   return (
     <div>
-      <div className="bg-white pt-20 pb-20">
-        <div className="flex justify-around items-center flex-col md:flex-row">
-          <div className="rounded-lg bg-gray-300 md:w-[500px] w-[300px] md:h-[450px] h-[300px]">
+      <div className="bg-white pt-10 pb-20">
+        <div className="flex justify-evenly items-center flex-col md:flex-row">
+          <div className="rounded-lg">
             <div className="">
               <Image
                 src={bookData.image}
-                width={500}
-                height={500}
+                width={300}
+                height={200}
                 alt="detailImage"
                 className=""
               />

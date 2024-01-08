@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import NavLinks from "./NavLinks";
 import { motion } from 'framer-motion';
 import { useCart } from "@/hooks/useCart";
 import { AiOutlineShopping } from 'react-icons/ai'
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import useMenuActive from "@/hooks/useMenuActive";
+import { menuItems } from "./MyLinks";
 
 const NavBar = () => {
   const {
@@ -15,14 +17,19 @@ const NavBar = () => {
     cartTotalQty: totalQuantities,
   } = useCart();
   const router = useRouter();
+  const pathname = usePathname();
   const goToCart = () => {
     setOpen(false);
     router.push('/cart');
   };
+  // const menuItems = [
+  //   { href: '/', label: 'Home' },
+  //   { href: '/about', label: 'About' },
+  //   { href: '/allMessages', label: 'Messages' },
+  //   { href: '/books', label: 'Books' },
+  // ];
   return (
-    <motion.nav 
-      className="bg-white sticky top-0 w-full shadow-xl z-50"
-    >
+    <motion.nav className="bg-white sticky top-0 w-full shadow-xl z-50">
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between items-center h-16">
           <Link href="/" className="" onClick={() => setOpen(false)}>
@@ -35,12 +42,17 @@ const NavBar = () => {
           </Link>
           <div className="flex items-center md:hidden">
             <div onClick={goToCart} className="pr-2 cursor-pointer">
-                <AiOutlineShopping fontSize="2em" className="relative" />
-                <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
-                  <span className="text-white text-sm font-light">{totalQuantities}</span>
-                </div>
+              <AiOutlineShopping fontSize="2em" className="relative" />
+              <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 top-8">
+                <span className="text-white text-sm font-light">
+                  {totalQuantities}
+                </span>
+              </div>
             </div>
-            <div className="text-3xl cursor-pointer" onClick={() => setOpen(!open)}>
+            <div
+              className="text-3xl cursor-pointer"
+              onClick={() => setOpen(!open)}
+            >
               {open ? (
                 <Image
                   src="/assets/close-svgrepo.svg"
@@ -60,32 +72,33 @@ const NavBar = () => {
           </div>
         </div>
         <ul className="md:flex hidden uppercase items-center gap-8 font-[Poppins]">
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/" className="py-7 px-3 inline-block">
-              Home
-            </Link>
-          </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/about" className="py-7 px-3 inline-block">
-              About
-            </Link>
-          </motion.li>
+          {menuItems.map((menuItem) => {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const isActive = useMenuActive(menuItem.href);
+            return (
+              <motion.li key={menuItem.label} whileHover={{ scale: 1.1 }}>
+                <Link
+                  href={menuItem.href}
+                  className={`py-7 px-3 inline-block ${
+                    isActive ? "text-pink-500" : ""
+                  }`}
+                >
+                  {menuItem.label}
+                </Link>
+              </motion.li>
+            );
+          })}
           <NavLinks />
           <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/allMessages" className="py-7 px-3 inline-block">
-              Messages
-            </Link>
-          </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <Link href="/books" className="py-7 px-3 inline-block">
-              Books
-            </Link>
-          </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <div onClick={goToCart} className="py-7 px-3 inline-block cursor-pointer">
+            <div
+              onClick={goToCart}
+              className="py-7 px-3 inline-block cursor-pointer"
+            >
               <AiOutlineShopping fontSize="2em" className="relative" />
               <div className="bg-red-500 rounded flex items-center justify-center absolute w-4 h-4 bottom-8">
-                <span className="text-white text-sm font-light">{totalQuantities}</span>
+                <span className="text-white text-sm font-light">
+                  {totalQuantities}
+                </span>
               </div>
             </div>
           </motion.li>
@@ -97,27 +110,24 @@ const NavBar = () => {
       duration-500 ${open ? "left-0" : "left-[-100%]"}
       `}
         >
-          <li>
-            <Link href="/" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
-              About
-            </Link>
-          </li>
+          {menuItems.map((menuItem) => {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const isActive = useMenuActive(menuItem.href);
+            return (
+              <li key={menuItem.label}>
+                <Link
+                  href={menuItem.href}
+                  className={`py-7 px-3 inline-block ${
+                    isActive ? "text-pink-500" : ""
+                  }`}
+                  onClick={() => setOpen(!open)}
+                >
+                  {menuItem.label}
+                </Link>
+              </li>
+            );
+          })}
           <NavLinks />
-          <li>
-            <Link href="/allMessages" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
-              Messages
-            </Link>
-          </li>
-          <li>
-            <Link href="/books" className="py-7 px-3 inline-block" onClick={() => setOpen(!open)}>
-              Books
-            </Link>
-          </li>
         </ul>
       </div>
     </motion.nav>

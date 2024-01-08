@@ -26,3 +26,10 @@ export const links: Link[] = [
         ],
     },
 ];
+
+export const menuItems = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/allMessages', label: 'Messages' },
+    { href: '/books', label: 'Books' },
+];

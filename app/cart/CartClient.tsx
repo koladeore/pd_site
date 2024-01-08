@@ -76,10 +76,10 @@ const CartClient = () => {
                   <div className="" key={item._id}>
                     <div className="flex pb-2 pt-2">
                       <div className="flex">
-                        <div className="rounded-lg bg-gray-300 md:w-[100px] w-[100px] h-[100px]">
+                        <div className="rounded-lg md:w-[100px] w-[100px] h-[100px]">
                           <Image
                             src={item.image}
-                            width={100}
+                            width={60}
                             height={100}
                             alt="detailImage"
                             className=""

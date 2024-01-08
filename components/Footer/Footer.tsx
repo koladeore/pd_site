@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import {
@@ -9,6 +10,8 @@ import {
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import ScrollAnimation from "../ScrollAnimation/ScrollAnimation";
+import { menuItems } from "../NavBar/MyLinks";
+import useMenuActive from "@/hooks/useMenuActive";
 
 const Footer = () => {
   return (
@@ -19,18 +22,22 @@ const Footer = () => {
             <div className="md:w-1/2 lg:w-1/4 mb-10">
               <h2 className="text-xl font-bold mb-4">Quick Links</h2>
               <ul>
-                <li className="mb-2 hover:text-pink-700">
-                  <Link href="/">Home</Link>
-                </li>
-                <li className="mb-2 hover:text-pink-700">
-                  <Link href="/about">About</Link>
-                </li>
-                <li className="mb-2 hover:text-pink-700">
-                  <Link href="/allMessages">Messages</Link>
-                </li>
-                <li className="mb-2 hover:text-pink-700">
-                  <Link href="/">Contact</Link>
-                </li>
+                {menuItems.map((menuItem) => {
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  const isActive = useMenuActive(menuItem.href);
+                  return (
+                    <li key={menuItem.label}>
+                      <Link
+                        href={menuItem.href}
+                        className={`py-2 px-3 inline-block ${
+                          isActive ? "text-pink-500" : ""
+                        }`}
+                      >
+                        {menuItem.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -81,15 +88,15 @@ const Footer = () => {
                   >
                     <FaTiktok
                       className="text-white hover:text-pink-400"
-                        fontSize="2em"
-                      />
-                  </  a>
-                </  li>
-              </ul>  
-            </div>  
-  
+                      fontSize="2em"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             <div className="w-full md:w-1/2 lg:w-1/4 mb-10">
-              <h2   className="text-xl font-bold mb-4">Contact</h2>
+              <h2 className="text-xl font-bold mb-4">Contact</h2>
               <div className="flex pb-4">
                 <AiOutlineMail className="text-white" fontSize="1.5em" />
                 <a

@@ -4,6 +4,7 @@ import ScrollAnimation from "../ScrollAnimation/ScrollAnimation";
 import { EBookData } from "@/app/lib/interface";
 import Image from "next/image";
 import { urlFor } from "@/app/lib/sanityImageUrl";
+import { BsCloudDownload } from 'react-icons/bs';
 
 async function getData() {
     try {
@@ -34,26 +35,27 @@ const Ebooks = async () => {
                         <h1 className="flex items-center justify-center text-gray-700 md:text-2xl text-xl font-bold">DOWNLOAD FREE EBOOK</h1>
                         {data.map((ebook) => (
                             <div key={ebook.title}>
-                                <div className="flex md:flex-row flex-col border border-gray p-4 md:mx-24 mx-4 md:mr-24 mr-auto ml-auto md:mt-2 mt-4 mb-10  w-80 md:w-auto items-center justify-center">
-                                    <div className="md:order-1 order-last">
-                                        <div className="h-60 w-60 rounded bg-gray-300">
+                                <div className="flex md:flex-row flex-col items-center md:items-start justify-center border border-gray p-4 md:mx-24 mx-auto md:mr-24 mr-auto ml-auto md:mt-2 mt-4 mb-10 w-full md:w-auto">
+                                    <div className="flex-shrink-0">
+                                        <div className="">
                                             <Image
                                                 src={urlFor(ebook.image).url()}
-                                                width={250}
-                                                height={250}
-                                                className=""
+                                                width={150}
+                                                height={200}
+                                                className="rounded-lg"
                                                 alt="book-card"
                                             />
-                                        </div>
-                                        <div className="md:pt-4 pt-6">
-                                            <a href={`${ebook.file}?dl=${ebook.title}.${getFileExtension(ebook.file)}`} className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded w-[170px]">
-                                                DownLoad
-                                            </a>
-                                        </div>
+                                        </div> 
                                     </div>
-                                    <div className="md:pl-10 pl-0 md:order-last">
+                                    <div className="md:pl-10 pl-6 flex-grow">
                                         <div className="md:text-2xl text-lg font-bold mb-2 pt-4 md:pt-0 md:pl-0 pl-6">{ebook.title}</div>
                                         <div className="text-gray-700 md:text-lg text-sm md:leading-9 leading-6 md:w-auto w-72 md:pl-0 pl-6 mb-4 md:mb-0">{ebook.details}</div>
+                                    </div>
+                                    <div className="md:pt-0 pt-0">
+                                        <a href={`${ebook.file}?dl=${ebook.title}.${getFileExtension(ebook.file)}`} className="hover:text-pink-400 text-[16px] md:text-[28px] flex gap-2 items-center">
+                                            <BsCloudDownload />
+                                            <div className="md:hidden">Download</div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

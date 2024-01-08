@@ -24,10 +24,10 @@ const AudioCard = ({ audio }: AudioCardProps) => {
                 </div>
             </div>
             <div className="border-t border-gray-300 h-0 w-64 mt-4"></div>
-            <p className="md:text-3xl text-2xl font-bold text-pink-500 w-72 pt-8 text-center">
+            <p className="md:text-3xl text-2xl font-bold text-pink-500 w-[95%] pt-8 md:text-center text-center">
                 {audio.title}
             </p>
-            <p className="pt-4 pb-10 text-gray-700 text-sm font-normal leading-6 w-72 text-center">
+            <p className="pt-4 pb-10 text-gray-700 text-sm font-normal leading-6 w-72 md:text-left text-center">
                 {audio.description}
             </p>
         </div>
